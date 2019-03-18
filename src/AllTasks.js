@@ -28,8 +28,8 @@ export default class Tasks extends React.Component {
       var plannerTasks = await getPlannerTasks(accessToken);
       // Update the array of events in state
       this.setState({
-              outlookTasks: outlookTasks.value, 
-              flaggedMessages: flaggedMessages.value, 
+              outlookTasks: outlookTasks.value,
+              flaggedMessages: flaggedMessages.value,
               plannerTasks: plannerTasks.value
           });
     }
@@ -100,12 +100,10 @@ export default class Tasks extends React.Component {
                   {this.state.plannerTasks.map(
                       function (task, index) {
                           return (
-                              <tr>
-                                  <td>{task.title}</td>
-                                  <td>{task.bucketId}</td>
-                                  <td>{task.planId}</td>
-                                  <td>{formatDateTime(task.createdDateTime)}</td>
-                              </tr>
+                                  <tr>
+                                      <td>{task.title}</td>
+                                      <td>{formatDateTime(task.createdDateTime)}</td>
+                                  </tr>
                           );
                       })}
               </tbody>

@@ -11,22 +11,22 @@ import { getUserDetails } from './GraphService';
 import NavBar from './NavBar';
 import ErrorMessage from './ErrorMessage';
 import Welcome from './Welcome';
-import OutlookTasks from './OutlookTasks';
+import Tasks from './AllTasks';
 
 class App extends Component {
   constructor(props) {
     super(props);
-  
+
     this.userAgentApplication = new UserAgentApplication(config.appId, null, null);
-  
+
     var user = this.userAgentApplication.getUser();
-  
+
     this.state = {
       isAuthenticated: (user !== null),
       user: {},
       error: null
     };
-  
+
     if (user) {
       // Enhance user object with data from Graph
       this.getUserProfile();
@@ -58,9 +58,9 @@ class App extends Component {
       // If the cache contains a non-expired token, this function
       // will just return the cached token. Otherwise, it will
       // make a request to the Azure OAuth endpoint to get a token
-  
+
       var accessToken = await this.userAgentApplication.acquireTokenSilent(config.scopes);
-  
+
       if (accessToken) {
         // Get the user's profile from Graph
         var user = await getUserDetails(accessToken);
@@ -87,7 +87,7 @@ class App extends Component {
           debug: JSON.stringify(err)
         };
       }
-  
+
       this.setState({
         isAuthenticated: false,
         user: {},
@@ -120,7 +120,7 @@ class App extends Component {
               } />
             <Route exact path="/tasks"
                render={(props) =>
-                 <OutlookTasks {...props}
+                 <Tasks {...props}
                     showError={this.setErrorMessage.bind(this)} />
             } />
           </Container>

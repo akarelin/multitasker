@@ -13,7 +13,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
-import '@fortawesome/fontawesome-free/css/all.css';
+// import '@fortawesome/fontawesome-free/css/all.css';
 
 function UserAvatar(props) {
   // If a user avatar is available, return an img tag with the pic
