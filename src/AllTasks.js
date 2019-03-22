@@ -3,6 +3,7 @@ import { Table } from 'reactstrap';
 import moment from 'moment';
 import config from './Config';
 import { getPlannerTasks, getFlaggedMessages, getOutlookTasks } from './GraphService';
+import { Link } from 'react-router-dom';
 
 // Helper function to format Graph date/time
 function formatDateTime(dateTime) {
@@ -52,7 +53,6 @@ export default class Tasks extends React.Component {
 class OutlookTasks extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             sortElem: []
         };
@@ -96,7 +96,11 @@ class OutlookTasks extends Component {
                         function (task, index) {
                             return (
                                 <tr key={index}>
-                                    <td>{task.subject}</td>
+                                    <td>
+                                        <Link to={`/tasks/${task.id}`}>
+                                            {task.subject}
+                                        </Link>
+                                    </td>
                                     <td>{task.status}</td>
                                     <td>{formatDateTime(task.createdDateTime)}</td>
                                 </tr>

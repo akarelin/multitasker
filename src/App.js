@@ -12,6 +12,7 @@ import NavBar from './NavBar';
 import ErrorMessage from './ErrorMessage';
 import Welcome from './Welcome';
 import Tasks from './AllTasks';
+import ContentOutlookTasks from "./ContentOutlookTasks";
 
 class App extends Component {
   constructor(props) {
@@ -123,6 +124,10 @@ class App extends Component {
                  <Tasks {...props}
                     showError={this.setErrorMessage.bind(this)} />
             } />
+            <Route path="/tasks/:id"
+               render={(props) =>
+                 <ContentOutlookTasks {...props} />
+             } />
           </Container>
         </div>
       </Router>

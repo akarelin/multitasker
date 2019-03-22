@@ -22,37 +22,37 @@ export async function getUserDetails(accessToken) {
 
 export async function getOutlookTasks(accessToken) {
     const client = getAuthenticatedClient(accessToken);
-  
+
     const outlookTasks = await client
       .api('/me/outlook/tasks')
       .version('beta')
-      .select("subject,status,importance")
+      .select("subject,status,importance,id,body")
       .filter("status ne 'Completed'")
       .get();
-  
+
     return outlookTasks;
   }
 
 export async function getPlannerTasks(accessToken) {
     const client = getAuthenticatedClient(accessToken);
-  
+
     const plannerTasks = await client
       .api('/me/planner/tasks')
       .version('beta')
       .select('title,planId,bucketId')
       .get();
-  
+
     return plannerTasks;
   }
 
   export async function getFlaggedMessages(accessToken) {
     const client = getAuthenticatedClient(accessToken);
-  
+
     const flaggedMessages = await client
       .api('/me/messages')
       .version('beta')
       .select('from,subject,flag,receivedDateTime')
       .get();
-  
+
     return flaggedMessages;
   }
