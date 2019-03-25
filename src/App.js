@@ -11,8 +11,8 @@ import { getUserDetails } from './GraphService';
 import NavBar from './NavBar';
 import ErrorMessage from './ErrorMessage';
 import Welcome from './Welcome';
-import Tasks from './AllTasks';
-import ContentOutlookTasks from "./ContentOutlookTasks";
+import Tasks from './Component/Task/AllTasks';
+import ContentOutlookTasks from "./Component/OutlookTasks/ContentOutlookTasks";
 
 class App extends Component {
   constructor(props) {
