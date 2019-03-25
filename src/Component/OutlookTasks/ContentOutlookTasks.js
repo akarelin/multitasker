@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import sanitizeHtml from "sanitize-html-react";
-import { getOutlookTasks } from "./GraphService";
-import config from "./Config";
+import { getOutlookTasks } from "../../GraphService";
+import config from "../../Config";
 
 class ContentOutlookTasks extends Component{
 

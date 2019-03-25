@@ -11,7 +11,7 @@ import { getUserDetails } from './GraphService';
 import NavBar from './NavBar';
 import ErrorMessage from './ErrorMessage';
 import Welcome from './Welcome';
-import Tasks from './Component/Task/AllTasks';
+import AllTasks from './Component/Task/AllTasks';
 import ContentOutlookTasks from "./Component/OutlookTasks/ContentOutlookTasks";
 
 class App extends Component {
@@ -121,7 +121,7 @@ class App extends Component {
               } />
             <Route exact path="/tasks"
                render={(props) =>
-                 <Tasks {...props}
+                 <AllTasks {...props}
                     showError={this.setErrorMessage.bind(this)} />
             } />
             <Route path="/tasks/:id"
