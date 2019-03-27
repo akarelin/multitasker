@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import sanitizeHtml from "sanitize-html-react";
-import { getOutlookTasks } from "../../GraphService";
+import {getOutlookTasks} from "../../GraphService";
+import {Table} from "reactstrap";
 import config from "../../Config";
 
-class ContentOutlookTasks extends Component{
+class ContentOutlookTasks extends Component {
 
     constructor(props) {
         super(props);
@@ -13,12 +14,12 @@ class ContentOutlookTasks extends Component{
     }
 
     async componentDidMount() {
-            let accessToken = await window.msal.acquireTokenSilent(config.scopes);
-            let outlookTasks = await getOutlookTasks(accessToken);
-            this.setState({
-                outlookTasks: outlookTasks.value
-            });
-        }
+        let accessToken = await window.msal.acquireTokenSilent(config.scopes);
+        let outlookTasks = await getOutlookTasks(accessToken);
+        this.setState({
+            outlookTasks: outlookTasks.value
+        });
+    }
 
     clear(content) {
         let clean = sanitizeHtml(content, {
@@ -29,15 +30,27 @@ class ContentOutlookTasks extends Component{
     }
 
     render() {
-         return(
+        return (
             <div>
-                {this.state.outlookTasks.map(tasks => {
-                    return(
-                        <div key={tasks.id}>
-                            {(this.props.match.params.id === tasks.id) && this.clear(tasks.body['content'])}
-                        </div>
-                    )
-                })}
+                <Table>
+                    <thead>
+                    <tr>
+                        <th scope="col">subject</th>
+                        <th scope="col">content</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.outlookTasks.map(tasks => {
+                        return (
+                            this.props.match.params.id === tasks.id &&
+                            <tr key={tasks.id}>
+                                <td>{tasks.subject}</td>
+                                <td>{this.clear(tasks.body['content'])}</td>
+                            </tr>
+                        )
+                    })}
+                    </tbody>
+                </Table>
             </div>
         )
     }
