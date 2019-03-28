@@ -39,7 +39,7 @@ export async function getPlannerTasks(accessToken) {
     const plannerTasks = await client
       .api('/me/planner/tasks')
       .version('beta')
-      .select('title,planId,bucketId')
+      .select('title,planId,bucketId,id')
       .get();
 
     return plannerTasks;

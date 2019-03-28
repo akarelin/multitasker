@@ -21,7 +21,7 @@ class FlaggedMessages extends Component {
                         function (msg, index) {
                             return (
                                 <tr key={index}>
-                                    <td>{msg.title}</td>
+                                    <td>{(msg.from) && msg.from.emailAddress.name}</td>
                                     <td>{msg.subject}</td>
                                     <td>{msg.flag.flagStatus}</td>
                                     <td>{formatDateTime(msg.receivedDateTime)}</td>
