@@ -17,7 +17,8 @@ class AllTasks extends Component {
         this.state = {
             outlookTasks: [],
             flaggedMessages: [],
-            plannerTasks: []
+            plannerTasks: [],
+            token: undefined
         };
     }
 
@@ -31,7 +32,8 @@ class AllTasks extends Component {
             this.setState({
                 outlookTasks: outlookTasks.value,
                 flaggedMessages: flaggedMessages.value,
-                plannerTasks: plannerTasks.value
+                plannerTasks: plannerTasks.value,
+                token: accessToken
             });
         }
         catch (err) {
@@ -44,7 +46,7 @@ class AllTasks extends Component {
             <div>
                 <OutlookTasks outlookTasks={this.state.outlookTasks}/>
                 <FlaggedMessages flaggedMessages={this.state.flaggedMessages}/>
-                <PlannerTasks plannerTasks={this.state.plannerTasks}/>
+                <PlannerTasks plannerTasks={this.state.plannerTasks} token={this.state.token}/>
             </div>
         );
     }
